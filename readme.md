@@ -143,6 +143,8 @@ def draw_galaxy(x, y, x1, x2, y1, y2):
     fig = plt.gcf()
     fig, ax = plt.subplots()
     fig.set_size_inches(18, 18)
+	plt.style.use('dark_background')
+    ax.set_facecolor('black')
     km = KMeans(n_clusters=y)
     km.fit(z)
     toutput = km.predict(z)

@@ -134,12 +134,14 @@ Testing various clusters for score:
 dataset_mds.drop(["label"], axis=1)
 getscores(dataset_mds)
 ```
+
+Here the best score is for 9 clusters. 
 ![Alt text](https://github.com/docligot/constellation_tools/blob/main/cluster_score.png)
 
-Get cluster membership (assuming 6 clusters). 
+Get cluster membership (assuming 9 clusters). 
 
 ```
-km = KMeans(n_clusters = 6)
+km = KMeans(n_clusters = 9)
 km.fit(dataset_mds.drop(["label"], axis=1))
 clusters = pd.DataFrame(km.predict(dataset_mds.drop(["label"], axis=1)))
 clusters.columns = ["cluster"]

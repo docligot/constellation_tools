@@ -136,6 +136,7 @@ getscores(dataset_mds)
 ```
 
 Here the best score is for 9 clusters. 
+
 ![Alt text](https://github.com/docligot/constellation_tools/blob/main/cluster_score.png)
 
 Get cluster membership (assuming 9 clusters). 

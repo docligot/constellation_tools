@@ -59,6 +59,19 @@ Heatmap of correlation values (using Excel):
 
 ![Alt text](https://github.com/docligot/constellation_tools/blob/main/correlation_heatmap.png)
 
+Converting correlations into distances
+
+```
+def rescale_corr(x):
+    return 2 - x
+
+dataset_rescale = dataset_correlation.apply(rescale_corr)
+dataset_rescale
+```
+
+![Alt text](https://github.com/docligot/constellation_tools/blob/main/rescaled_correlation.png)
+
+
 ## Multi-dimensional Scaling
 
 MDS flattens the correlation values into x-y coordinates (or x-y-z if needed)
@@ -77,7 +90,7 @@ def create_mds(x):
 ## Generating MDS Coordinates
 
 ```
-dataset_mds = create_mds(dataset_correlation)
+dataset_mds = create_mds(dataset_rescale)
 dataset_mds
 ```
 ![Alt text](https://github.com/docligot/constellation_tools/blob/main/mds_coordinates.png)
@@ -170,17 +183,11 @@ def draw_galaxy(x, y, x1, x2, y1, y2):
     for i, txt in enumerate(x.label):
         plt.annotate(txt, (x.x_axis[i], x.y_axis[i]))
     plt.axis([x1, x2, y1, y2])
-    circle = Circle((0,0), 0.05, color='gray', fill=False)
-    circle1 = Circle((0,0), 0.1, color='gray', fill=False)
-    circle2 = Circle((0,0), 0.15, color='gray', fill=False)
-    ax.add_artist(circle)
-    ax.add_artist(circle1)
-    ax.add_artist(circle2)
 ```
 
-Draw the galaxy using 6 clusters
+Draw the galaxy using 9 clusters
 ``` 
-draw_galaxy(dataset_mds, 6, -.25, .25, -.25, .25) 
+draw_galaxy(dataset_mds, 9, -2, 2, -2, 2)
 ```
 
 ![Alt text](https://github.com/docligot/constellation_tools/blob/main/galaxy.png)
